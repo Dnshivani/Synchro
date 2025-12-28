@@ -9,20 +9,21 @@ const userModel = new mongoose.Schema({
   email : {
     type : String,
     unique : true,
-    required : [true, "email must present"]
+    required : [true, "email must present"],
+    match : [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "please enter valid email"]
   },
   password : {
     type : String,
     reuired : [true, "password is required"],
     minlength : 6,
-    select : flase
+    select : false
   },
   avatar : {
     type : String,
     default : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
   },
   workSpaces : {
-    type : mongoose.Schema.Types.ObjectId,
+    type : [{type : String}],
     ref : "workspace"
   },
   createdAt : {
@@ -30,4 +31,5 @@ const userModel = new mongoose.Schema({
     default : Date.now
   }
 })
-    
+
+export default mongoose.model("User", userModel);
