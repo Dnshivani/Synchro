@@ -1,7 +1,7 @@
 import User from "../models/user.js"
 import bcrypt from "bcrypt"
 
-const registerUser = async(req, res, next) => {
+export const registerUser = async(req, res, next) => {
     try {
         const {email, password} = req.body;
         const userExist = await User.findOne({email: email});
@@ -22,4 +22,17 @@ const registerUser = async(req, res, next) => {
         res.status(500).json({message : e.message});
     }
 }
-export default registerUser;
+
+export const getUsers = async (req, res) => {
+  try {
+    const existed = await User.find();
+    const count = await User.countDocuments();
+    res.status(200).json({
+        message: "User found",
+        totalUsers: count,
+        existed
+    }) 
+    } catch (e) {
+        res.staus(400).json({message: error.message})
+  }
+}
