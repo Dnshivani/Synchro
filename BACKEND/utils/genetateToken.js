@@ -10,4 +10,4 @@ const generateToken = (id) => {
     })
 }
 
-module.exports = generateToken;
+export default generateToken;

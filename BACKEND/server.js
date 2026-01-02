@@ -14,7 +14,11 @@ connect_db(mongo_uri);
 app.use(cors());
 app.use(express.json());
 app.use("/user", userRoute);
-
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "this is the home page"
+    })
+})
 app.listen(port, () => {
     console.log(chalk.green("server is connected ✅") + chalk.yellow(port));
 })

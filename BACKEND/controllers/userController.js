@@ -1,5 +1,6 @@
 import User from "../models/user.js"
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
+import generateToken from "../utils/genetateToken.js"
 
 export const registerUser = async(req, res, next) => {
     try {
@@ -16,7 +17,10 @@ export const registerUser = async(req, res, next) => {
         }
         const newUser = await User.create(userData);
         res.status(201).json({
-            message: "User created sucessfully"
+            message: "User created sucessfully",
+            name: newUser.name,
+            email: newUser.email,
+            token: generateToken(newUser._id)
             });
     } catch(e) {
         res.status(500).json({message : e.message});
@@ -36,3 +40,20 @@ export const getUsers = async (req, res) => {
         res.staus(400).json({message: error.message})
   }
 }
+
+export const loginUser = async (req, res) => {
+    const {email, password} = req.body;
+    const user = await User.findOne({email}).select('+password');
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (isMatch) {
+        res.json({
+            name : user.name,
+            email : user.email,
+            token : generateToken(user.id)
+        })
+    } else {
+        return res.json(401).json({
+            message : "invalid email or password!"
+        })
+    }
+};
