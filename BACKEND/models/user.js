@@ -23,7 +23,7 @@ const userModel = new mongoose.Schema({
     default : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
   },
   workSpaces : {
-    type : [{type : String}],
+    type : mongoose.Schema.Types.ObjectId,
     ref : "workspace"
   },
   createdAt : {
