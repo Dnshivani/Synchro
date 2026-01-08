@@ -16,8 +16,8 @@ export  const createWorkSpace = async (req, res) => {
             res.status(200).json({
                 message : "The new Workspace created",
                 name : newWorkspace.name,
-                owner : newWorkspace.owner,
-                members : newWorkspace.members
+                description : newWorkspace.description,
+                owner : newWorkspace.owner
             })
         }
     }catch (e) {
