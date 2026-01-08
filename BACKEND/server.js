@@ -6,6 +6,7 @@ import cors from "cors"
 dotenv.config();
 import connect_db from "./config/connect_db.js";
 import userRoute from "./routes/userRoutes.js";
+import workSpaceRoute from "./routes/workSpaceRoutes.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -14,6 +15,7 @@ connect_db(mongo_uri);
 app.use(cors());
 app.use(express.json());
 app.use("/user", userRoute);
+app.use("/workspace", workSpaceRoute);
 app.get("/", (req, res) => {
     res.status(200).json({
         message: "this is the home page"

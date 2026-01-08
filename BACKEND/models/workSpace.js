@@ -15,10 +15,10 @@ const workspace = new mongoose.Schema({
         ref : 'User',
         required : true
     },
-    members : {
+    members : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
-    },
+    }],
     createdAt : {
         type : Date,
         default : Date.now()
