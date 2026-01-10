@@ -11,6 +11,7 @@ export default function NavBar() {
 
                 <div className="navbar-end">
                     <a className="btn text-custom-primary ">Get Started</a>
+                    <ThemeToggle />
                 </div>
             </div>
         </div>
