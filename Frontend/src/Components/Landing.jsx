@@ -1,15 +1,17 @@
 import React from 'react'
+import NavBar from './NavBar'
+import HeroSection from './HeroSection'
+import Footer from './Footer'
+import HowItworks from './HowItworks'
 
 export default function Landing() {
     return (
-        <div>
-            <h1 className='text-balance'>Landing Page</h1>
-            <nav className='group gap-10'>
-                <a href="#home" className='gap-2'>Home</a>
-                <a href="#about" className='gap-2'>About</a>
-                <a href="#contact">Contact</a>
+        <div className='bg-custom-secondary'>
 
-            </nav>
+            <NavBar />
+            <HeroSection />
+            <HowItworks />
+            <Footer />
         </div>
     )
 }
