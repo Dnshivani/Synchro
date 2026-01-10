@@ -38,7 +38,7 @@ export default function ThemeToggle() {
 
                 {/* Moon icon - shown in DARK theme */}
                 <svg
-                    className="w-5 h-5 fill-current hidden dark:block"  // Show only in dark mode
+                    className="w-5 h-5 fill-current hidden dark:block   text-custom-primary"  // Show only in dark mode
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >

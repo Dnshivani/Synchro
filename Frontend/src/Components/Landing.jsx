@@ -6,8 +6,8 @@ import HowItworks from './HowItworks'
 
 export default function Landing() {
     return (
-        <div className='bg-custom-secondary'>
-
+        <div >
+            <h1 className='text-center'>helo</h1>
             <NavBar />
             <HeroSection />
             <HowItworks />
