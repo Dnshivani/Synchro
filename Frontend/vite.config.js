@@ -6,5 +6,8 @@ import daisyui from 'daisyui'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(),],
+  plugins: [react(), tailwindcss({
+    // Add DaisyUI to Tailwind v4
+    plugins: [daisyui],
+  }),],
 })

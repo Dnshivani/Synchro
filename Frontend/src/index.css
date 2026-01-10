@@ -1,22 +1,92 @@
+/* Tawilind import  */
 @import "tailwindcss";
 
-/* Load DaisyUI as a plugin here */
-@plugin "daisyui";
+/*Daisy ui plugin */
+@plugin "daisyui" {
+    themes: light --default {
+        --color-primary: #1F7A5A;
+        --color-secondary: #F4F7F5;
+        --color-accent: #F59E0B;
+        --color-base-100: #ffffff;
+        --color-base-200: #F4F7F5;
+        --color-base-300: #D1D5DB;
+        --color-neutral: #1f2937;
+        --color-neutral-content: #6b7280;
+        --color-success: #10b981;
+        --color-warning: #F59E0B;
+        --color-error: #ef4444;
+        --color-info: #3b82f6;
+    }
 
-@theme {
-  --color-primary: #1F7A5A;
-  --color-secondary: #F4F7F5;
-  --color-accent: #F59E0B;
-  
-  --color-base-100: #ffffff;
-  --color-base-200: #F4F7F5;
-  --color-base-300: #D1D5DB;
-  
-  --color-neutral: #1f2937;
-  --color-neutral-content: #6b7280;
-  
-  --color-success: #10b981;
-  --color-warning: #F59E0B;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
+    ,
+    dark --prefersdark {
+        /* ========== DARK THEME ========== */
+        --color-primary: #2dd4bf;
+        --color-secondary: #1e293b;
+        --color-accent: #fbbf24;
+        --color-base-100: #0f172a;
+        --color-base-200: #1e293b;
+        --color-base-300: #334155;
+        --color-neutral: #f8fafc;
+        --color-neutral-content: #cbd5e1;
+        --color-success: #10b981;
+        --color-warning: #fbbf24;
+        --color-error: #f87171;
+        --color-info: #60a5fa;
+    }
+
+    ;
+}
+
+/* ========== CUSTOM UTILITY CLASSES ========== */
+/* Backgrounds */
+.bg-custom-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-custom-secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg-custom-accent {
+    background-color: var(--color-accent);
+}
+
+/* Text */
+.text-custom-primary {
+    color: var(--color-primary);
+}
+
+.text-custom-secondary {
+    color: var(--color-text-light);
+}
+
+.text-custom-accent {
+    color: var(--color-accent);
+}
+
+/* Borders */
+.border-custom {
+    border-color: var(--color-border);
+}
+
+.border-custom-primary {
+    border-color: var(--color-primary);
+}
+
+.border-custom-accent {
+    border-color: var(--color-accent);
+}
+
+/* Hover States */
+.hover\:bg-custom-primary:hover {
+    background-color: var(--color-primary-600);
+}
+
+.hover\:text-custom-primary:hover {
+    color: var(--color-primary-600);
+}
+
+.hover\:border-custom-primary:hover {
+    border-color: var(--color-primary-600);
 }
