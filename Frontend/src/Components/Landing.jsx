@@ -7,7 +7,7 @@ import HowItworks from './HowItworks'
 export default function Landing() {
     return (
         <div >
-            <h1 className='text-center'>helo</h1>
+            {/* <h1 className='text-center'>Daisy working</h1> */}
             <NavBar />
             <HeroSection />
             <HowItworks />
