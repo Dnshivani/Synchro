@@ -10,12 +10,13 @@ const projectSchema = new mongoose.Schema({
     },
     owner : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'User'
+        ref : 'User',
+        required : true
     },
     members : [
         {
-            user : {type : mongoose.Schema.Types.ObjectId , ref : 'User'},
-            role : {type : String, enum : ['Admin', 'Editor', 'viewer'], default : 'Editor'}
+            user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+            role: { type: String, enum: ['Admin', 'Editor', 'Viewer'], default: 'Editor' }
         }
     ],
     startDate : {
@@ -36,7 +37,7 @@ const projectSchema = new mongoose.Schema({
 projectSchema.virtual('tasks', {
     ref : 'Task',
     localField : '_id',
-    foreginField : 'Project'
+    foreignField : 'Project'
 });
 
 const projectModel = mongoose.model('Project', projectSchema);

@@ -1,9 +1,9 @@
-import project from "../models/project"
+import projectModel from "../models/project.js"
 
 export const createNewProject = async (req, res) => {
     const {name, description, owner} = req.body;
   try {
-    const newProject = await project.create({
+    const newProject = await projectModel.create({
         name : name,
         description : description,
         members : [{
