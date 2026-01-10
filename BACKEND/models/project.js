@@ -26,7 +26,7 @@ const projectSchema = new mongoose.Schema({
     },
     status : {
         type : String,
-        enum : ['onGoing', 'completed', 'droped', 'holdOn']
+        enum : ['active', 'onGoing', 'completed', 'droped', 'holdOn']
     }
 },{
     timeStamps : true,
