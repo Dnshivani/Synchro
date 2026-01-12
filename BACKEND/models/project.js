@@ -21,6 +21,7 @@ const projectSchema = new mongoose.Schema({
     ],
     startDate : {
         type : Date,
+        default : Date.now()
     },
     deadLine : {
         type : Date,
