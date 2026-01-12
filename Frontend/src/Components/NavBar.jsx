@@ -16,7 +16,7 @@ export default function NavBar() {
                 </div>
                 <div className="navbar-end ">
                     <Link to="/signup">
-                        <a className="btn  text-custom-primary" >Get Started</a>
+                        <a className="btn btn-outline  text-custom-primary" >Get Started</a>
                     </Link>
                     <ThemeToggle />
                 </div>
