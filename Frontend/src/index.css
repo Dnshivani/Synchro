@@ -1,4 +1,37 @@
-/* Tawilind import  */
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Force your theme colors */
+:root {
+    --color-primary: #1F7A5A;
+    --color-primary-content: #ffffff;
+    --color-secondary: #F4F7F5;
+    --color-accent: #F59E0B;
+    --color-neutral: #1f2937;
+    --color-base-100: #ffffff;
+    --color-base-200: #F4F7F5;
+    --color-base-300: #D1D5DB;
+}
+
+/* Override DaisyUI button colors */
+.btn-primary {
+    background-color: #1F7A5A;
+    border-color: #1F7A5A;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #196349;
+    border-color: #196349;
+}
+
+/* Make sure other DaisyUI components use your colors */
+.bg-primary {
+    background-color: #1F7A5A;
+}
+
+.text-primary {
+    color: #1F7A5A;
+}
