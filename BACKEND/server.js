@@ -8,6 +8,7 @@ import connect_db from "./config/connect_db.js";
 import userRoute from "./routes/userRoutes.js";
 import workSpaceRoute from "./routes/workSpaceRoutes.js";
 import projectRoutes from "./routes/projectRoute.js";
+import { requestLogger } from "./middleWare/logger.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -15,6 +16,7 @@ const mongo_uri = process.env.MONGO_URI;
 connect_db(mongo_uri);
 app.use(cors());
 app.use(express.json());
+app.use(requestLogger);
 app.use("/user", userRoute);
 app.use("/workspace", workSpaceRoute);
 app.use("/project", projectRoutes)

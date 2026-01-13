@@ -7,3 +7,4 @@ node_modules/
 dist/
 build/
 frontend/package-lock.json
+package-lock.json
