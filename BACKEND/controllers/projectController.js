@@ -38,3 +38,20 @@ export const createNewProject = async (req, res) => {
     })
   }
 }
+
+export const getProject = async (req, res) => {
+    const {id} = req.params.id;
+    try {
+        const project = await projectModel.findById(id);
+        if (project) {
+            res.status(200).json({
+                message : `This is the project referenced to ${id}`,
+                ...project
+            })
+        }
+    } catch(e) {
+    res.status(404).json({
+        message: "project not found"
+    })
+}
+} 

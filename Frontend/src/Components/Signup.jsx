@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import Landing from './Landing'
 import HeroSection from './HeroSection'
 import Logo from './Logo'
-
+ 
 export default function Signup() {
     const [isSignup, changePage] = React.useState(true);
-    const [details, modify] = React.useState({ "name": "", "email": "", "password": "" });
+    const [details, modify] = React.useState({ "name": "", "email": "", "password": "" }); 
     const handleChange = (e) => {
         modify({ ...details, [e.target.name]: e.target.value })
         // console.log(details)
