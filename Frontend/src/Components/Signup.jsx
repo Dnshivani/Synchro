@@ -13,7 +13,7 @@ export default function Signup() {
     };
 
     const clear = () => {
-        modify({ [details.name]: "", [details.email]: "", [details.password]: "" })
+        modify({ "name": "", "email": "", "password": "" });
     };
     return (
 
@@ -28,8 +28,8 @@ export default function Signup() {
                     <input className='justify-center' name='email' value={details.email} onChange={handleChange} type='email' placeholder='youremail@gmail.com' required /></div>
                 <div> <label className='  justify-center ' >Enter password</label>
                     <input className='  justify-center ' name='password' value={details.password} onChange={handleChange} type='password' placeholder='........' required /></div>
-                <button className='item justify-center btn ' onClick={() => { clear }}>{isSignup ? 'Create Account' : 'Login'} </button>
-                <button onClick={() => { changePage(!isSignup) }}>{isSignup ? 'Already have a account login ' : 'Dont have a account Signup'}</button>
+                <button className='item justify-center btn ' onClick={() => { clear() }}>{isSignup ? 'Create Account' : 'Login'} </button>
+                <button onClick={() => { changePage(!isSignup) }}>{isSignup ? 'Already have a account ?login ' : 'Dont have a account ? Signup'}</button>
             </form >
 
         </div >
