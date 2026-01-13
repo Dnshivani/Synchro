@@ -25,7 +25,7 @@ export default function Signup() {
 
     const handleChange = (e) => {
         modify({ ...details, [e.target.name]: e.target.value });
-        console.log(details);
+        console.log(details);// is to be removed
     };
 
     const fetch = async (e) => {
@@ -37,7 +37,8 @@ export default function Signup() {
                     headers: { "Content-Type": "application/json", },
                 });
                 console.log(response.data);
-                if (response.data == 200) { showSuccess("Created account successfully."); }
+                //if(response)
+                if (response.data == 200) { showSuccess("Created account successfully."); }// add changePage((prev) => !prev)
                 else {
                     showError("this name or email already exists.");
                 }
@@ -46,7 +47,7 @@ export default function Signup() {
                     headers: { "Content-Type": "application/json", },
                 });
                 console.log(response.data);
-
+                // if (response)
                 if (response.data == 200) { showSuccess("Verified successfully."); }
                 else {
                     showError("incorrect email or password. please check ");
