@@ -17,9 +17,12 @@ export const registerUser = async(req, res, next) => {
         }
         const newUser = await User.create(userData);
         res.status(201).json({
+            success : true,
             message: "User created sucessfully",
-            name: newUser.name,
-            email: newUser.email,
+            data : {
+                 name: newUser.name,
+                 email: newUser.email
+            },
             token: generateToken(newUser._id)
             });
     } catch(e) {
@@ -51,7 +54,7 @@ export const loginUser = async (req, res) => {
             token : generateToken(user.id)
         })
     } else {
-        return res.json(401).json({
+        return res.status(401).json({
             message : "invalid email or password!"
         })
     }
