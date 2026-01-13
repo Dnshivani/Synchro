@@ -29,7 +29,7 @@ export default function Signup() {
     };
 
     const fetch = async (e) => {
-        e.preventDefault(); //basic ga going to some url signup?email=" "&password ala vellakunda stopping
+        e.preventDefault();// this is to stop the refresh of a form //basic ga going to some url signup?email=" "&password ala vellakunda stopping 
         setLoad(true);
         try {
             if (isSignup) {
