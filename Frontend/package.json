@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.13.2",
+=======
+    "@tailwindcss/vite": "^4.1.18",
+>>>>>>> b04fc4e7cbb07fd0c37994fc6a2a5413aea28185
     "daisyui": "^5.5.14",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
