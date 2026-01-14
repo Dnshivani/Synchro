@@ -4,8 +4,12 @@ import generateToken from "../utils/genetateToken.js";
 
 export const registerUser = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const {name, email, password } = req.body;
     const userExist = await User.findOne({ email: email });
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "Please fill in all fields" });
+    }
+
     if (userExist) {
       return res.status(409).json({ message: "user already exist" });
     }
@@ -41,7 +45,7 @@ export const getUsers = async (req, res) => {
       existed,
     });
   } catch (e) {
-    res.staus(400).json({ message: error.message });
+    res.staus(500).json({ message: error.message });
   }
 };
 
@@ -49,12 +53,12 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email }).select("+password");
-    const match = await bcrypt.compare(password, user.password);
     if (!user) {
       return res.status(401).json({
         message: "user does not exist",
       });
     }
+    const match = await bcrypt.compare(password, user.password);
     if (!match) {
       return res.status(403).json({ message: "incorrect Password!" });
     }
@@ -65,6 +69,6 @@ export const loginUser = async (req, res) => {
       token: generateToken(user.id),
     });
   } catch (e) {
-    res.status(404).json({message : "invalid userName or password"})
+    res.status(500).json({message : "invalid userName or password"})
   }
 };
