@@ -111,7 +111,7 @@ export default function Signup() {
                     <span>{success}</span>
                 </div>}
                 {error && <div role="alert" className="alert alert-error alert-soft">
-                    <span>Error! Task failed successfully.</span>
+                    <span>{error}</span>
                 </div>}
             </div>
         </div>
