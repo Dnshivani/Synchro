@@ -14,3 +14,8 @@
 ####  |POST|""http://localhost:5000/user/login"
 ### get all the users (only admin)
 ####  |GET|""http://localhost:5000/user"
+
+
+## Landing Page **routes**
+### 1.user create (register)
+### |GET| "http:localhost:5000/landingPage"
