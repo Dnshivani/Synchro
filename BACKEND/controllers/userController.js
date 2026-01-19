@@ -41,8 +41,7 @@ export const getUsers = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "User found",
-      totalUsers: count,
-      existed,
+      existed
     });
   } catch (e) {
     res.staus(500).json({ message: error.message });

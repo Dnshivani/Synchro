@@ -4,6 +4,6 @@ import {registerUser, getUsers, loginUser} from "../controllers/userController.j
 import {protect} from "../middleWare/protect.js";
 
 router . post('/register', registerUser);
-router . get('/', getUsers);
+router . get('/', protect, getUsers);
 router . post('/login', loginUser);
 export default router;

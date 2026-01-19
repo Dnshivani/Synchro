@@ -9,6 +9,7 @@ import userRoute from "./routes/userRoutes.js";
 import workSpaceRoute from "./routes/workSpaceRoutes.js";
 import projectRoutes from "./routes/projectRoute.js";
 import { requestLogger } from "./middleWare/logger.js";
+import landingRoutes from "./routes/landingRoutes.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -19,7 +20,8 @@ app.use(express.json());
 app.use(requestLogger);
 app.use("/user", userRoute);
 app.use("/workspace", workSpaceRoute);
-app.use("/project", projectRoutes)
+app.use("/project", projectRoutes);
+app.use('/landingPage', landingRoutes);
 app.get("/", (req, res) => {
     res.status(200).json({
         message: "this is the home page"
