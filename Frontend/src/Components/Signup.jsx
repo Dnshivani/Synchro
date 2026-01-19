@@ -28,35 +28,30 @@ export default function Signup() {
         console.log(details);// is to be removed
     };
 
-    const fetch = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();// this is to stop the refresh of a form //basic ga going to some url signup?email=" "&password ala vellakunda stopping 
         setLoad(true);
+        showError("");
+        showSuccess("");
         try {
             if (isSignup) {
                 const response = await axios.post("http://localhost:5000/user/register", details, {
                     headers: { "Content-Type": "application/json", },
                 });
                 console.log(response.data);
-                //if(response)
-                if (response.data == 200) { showSuccess("Created account successfully."); }// add changePage((prev) => !prev)
-                else {
-                    showError("this name or email already exists.");
-                }
+
+                showSuccess("Created account successfully.");
+
+
             } else {
                 const response = await axios.post("http://localhost:5000/user/login", details, {
                     headers: { "Content-Type": "application/json", },
                 });
                 console.log(response.data);
-                // if (response)
-                if (response.data == 200) { showSuccess("Verified successfully."); }
-                else {
-                    showError("incorrect email or password. please check ");
-                }
-
+                showSuccess("Verified successfully.");
             }
         } catch (e) {
-            console.error(e);
-            showError(e);
+            showError(e.response?.data?.message || "Something went wrong");
         }
         finally {
             setLoad(false);
@@ -71,48 +66,54 @@ export default function Signup() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
             <div className=' max-w-lg card bg-base-100 w-96 shadow-sm' >
 
-                <form className='flex flex-col gap-2 items-center justify-center card-body' method="POST" onSubmit={fetch}   >
-                    <div className='card-title'> <Link to="/">  <Logo /></Link></div>
+                <form className='  card bg-white shadow<div className="mb-4 space-y-2">
+                    {success && <div className="alert alert-success shadow-lg animate-fade-in">
+                        <span>{success}</span>
+                    </div>}
+                    {error && <div role="alert" className="alert alert-error shadow-lg animate-fade-in">
+                        <span>{error}</span>
+                    </div>}
+                </div>-xl border card-body p-8' method="POST" onSubmit={handleSubmit} >
+                    <div className='flex justify-center mb-6'> <Link to="/">  <Logo /></Link></div>
 
-                    <h2 className=''>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
-                    <p className=''>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
-
-                    {isSignup && (<div className='space-y-2'>
-                        < label className='justify-center block text-sm font-medium text-gray-700' > Enter name  </label >
-                        <input type="text" className="input input-bordered w-full validator focus:input-primary  " required placeholder="Username" name='name' value={details.name} onChange={handleChange}
-                            pattern="[A-Za-z][A-Za-z0-9\_]*" minLength="3" maxLength="30" title="Only letters, numbers or dash" />
-                        <p className="validator-hint text-xs text-gray-500 mt-1">
-                            Must be 3 to 30 characters
-                            <br />containing only letters, numbers or underscore
-                        </p>
-                        {/* <input className=' justify-center' name='name' value={details.name} onChange={handleChange} type='text' placeholder='Name' required /> */}
-                    </div>)}
-
-                    <div className='space-y-1'> <label className='justify-center block text-sm font-medium text-gray-700' >Enter email</label>
-                        <input className="input validator" type="email" required placeholder="mail@site.com" name='email' value={details.email} onChange={handleChange} />
-                        {/* <input className='justify-center' name='email' value={details.email} onChange={handleChange} type='email' placeholder='youremail@gmail.com' required /> */}
+                    <div className="text-center mb-8">
+                        <h2 className='text-2xl font-bold text-gray-800'>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
+                        <p className='text-gray-600 mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
                     </div>
-                    <div> <label className='  justify-center ' >Enter password</label>
-                        <input type="password" className="input validator" required placeholder="Password" minLength="8" name='password' value={details.password} onChange={handleChange}
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                        <p className="validator-hint">
-                            Must be more than 8 characters, including
-                            <br />At least one number
-                            <br />At least one lowercase letter
-                            <br />At least one uppercase letter
-                        </p>
-                        {/* <input className='  justify-center ' name='password' value={details.password} onChange={handleChange} type='password' placeholder='........' required /> */}
+                    <div className="space-y-4">
+
+                        {isSignup && (<div className='form-control'>
+                            < label className='label label-text font-medium' > Full Name  </label >
+                            <input type="text" className="input input-bordered  border-2 w-full validator" placeholder="Enter Your Name" name='name' value={details.name} onChange={handleChange}
+                                pattern="[A-Za-z][A-Za-z0-9\_]*" minLength="3" maxLength="30" title="Only letters, numbers or dash" />
+                            <p className="validator-hint text-xs text-gray-500 ">
+                                Must be 3 to 30 characterss,containing only letters, numbers or underscore.
+                            </p>
+                            {/* <input className=' justify-center' name='name' value={details.name} onChange={handleChange} type='text' placeholder='Name' required /> */}
+                        </div>)}
+
+
+                        <div className='form-control'> <label className='label label-text font-medium' >Enter email</label>
+                            <input className="input input-bordered w-full border-2 validator" type="email" placeholder="mail@site.com" name='email' value={details.email} onChange={handleChange} />
+                            {/* <input className='justify-center' name='email' value={details.email} onChange={handleChange} type='email' placeholder='youremail@gmail.com' required /> */}
+                        </div>
+                        <div className="form-control">
+                            <label className='label label-text font-medium' > Password</label>
+                            <input type="password" className="input  input-bordered border-2 w-full validator" placeholder="••••••••" minLength="8" name='password' value={details.password} onChange={handleChange}
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
+                            <p className="validator-hint  text-xs text-gray-500 ">
+                                Must be more than 8 characters, including one number, one lowercase letter, one uppercase letter
+                            </p>
+                            {/* <input className='  justify-center ' name='password' value={details.password} onChange={handleChange} type='password' placeholder='........' required /> */}
+                        </div>
+                        <div className=" text-center mt-4">
+                            <button className='  btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >{isSignup ? 'Create Account ' : 'Login '} </button>
+                            <p className="   text-green-600 hover:text-green-900 font-medium hover:underline " onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>{isSignup ? 'Already have a account ? login ' : 'Dont have a account ? Signup'}</p>
+                        </div>
                     </div>
-                    <button className='item justify-center btn ' >{isSignup ? 'Create Account' : 'Login'} </button>
-                    <button onClick={() => { changePage(!isSignup) }}>{isSignup ? 'Already have a account ? login ' : 'Dont have a account ? Signup'}</button>
                 </form >
-                {success && <div role="alert" className="alert alert-success alert-soft">
-                    <span>{success}</span>
-                </div>}
-                {error && <div role="alert" className="alert alert-error alert-soft">
-                    <span>{error}</span>
-                </div>}
+
             </div>
         </div>
     )
