@@ -4,6 +4,7 @@ import Landing from './Landing'
 import HeroSection from './HeroSection'
 import Logo from './Logo'
 import axios from 'axios'
+import DashBoard from './DashBoard'
 
 export default function Signup() {
     const [isSignup, changePage] = React.useState(true);
@@ -41,6 +42,7 @@ export default function Signup() {
                 console.log(response.data);
 
                 showSuccess("Created account successfully.");
+                <Link to="/dashboard"><DashBoard /></Link>
 
 
             } else {
@@ -109,7 +111,7 @@ export default function Signup() {
                         </div>
                         <div className=" text-center mt-4">
                             <button className='  btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >{isSignup ? 'Create Account ' : 'Login '} </button>
-                            <p className="   text-green-600 hover:text-green-900 font-medium hover:underline " onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>{isSignup ? 'Already have a account ? login ' : 'Dont have a account ? Signup'}</p>
+                            <p className="   text-green-600 hover:text-green-900 font-medium hover:underline cursor-pointer " onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>{isSignup ? 'Already have a account ? login ' : 'Dont have a account ? Signup'}</p>
                         </div>
                     </div>
                 </form >

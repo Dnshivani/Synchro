@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from './Components/Landing.jsx'
 import NavBar from './Components/NavBar.jsx'
 import Signup from './Components/Signup.jsx'
+import DashBoard from './Components/DashBoard.jsx'
 function App() {
 
   return (
@@ -13,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+
       </Routes>
     </>
   )
