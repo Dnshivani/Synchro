@@ -57,12 +57,6 @@ export default function Signup() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
             <div className='max-w-lg card bg-base-100 w-96 shadow-sm bg-white ' >
 
-                {success && <div className="alert alert-success shadow-lg animate-fade-in">
-                    <span>{success}</span>
-                </div>}
-                {error && <div role="alert" className="alert alert-error shadow-lg animate-fade-in">
-                    <span>{error}</span>
-                </div>}
 
                 <div className='text-xl border card-body p-8 '>
                     <div className='flex justify-center mb-6'> <Link to="/"> <Logo /> </Link> </div>
@@ -99,12 +93,22 @@ export default function Signup() {
                             </p>
                         </div>
                         <div className="text-center mt-4">
-                            <button className='btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >
-                                {isSignup ? 'Create Account ' : 'Login '}
-                            </button>
-                            <p className="text-green-600 hover:text-green-900 font-small hover:underline cursor-pointer"
+
+                            {success || error ? (<div> {success && <div className="alert alert-success shadow-lg animate-fade-in">
+                                <span>{success}</span>
+                            </div>}
+                                {error && <div role="alert" className="alert alert-error shadow-lg animate-fade-in">
+                                    <span>{error}</span>
+                                </div>}
+                            </div>) : (
+                                <button className='btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >
+                                    {isSignup ? 'Create Account ' : 'Login '}
+                                </button>
+                            )}
+                            <p className=" font-small"
                                 onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>
-                                {isSignup ? 'Already have a account ? login ' : 'Dont have a account ? Signup'}
+                                {isSignup ? 'Already have a account ? ' : 'Dont have a account ? '}
+                                <span className='text-green-600 hover:text-green-900  hover:underline cursor-pointer'>{isSignup ? 'Login' : 'Signup'}</span>
                             </p>
                         </div>
                     </form >
