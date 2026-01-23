@@ -39,6 +39,23 @@ export const createNewProject = async (req, res) => {
   }
 }
 
+export const getMyProjects = async (req, res) => {
+    try {
+        const projects = await projectModel.find({
+            $or: [
+                { owner: req.user._id },
+                { members: req.user._id }
+            ]
+        })
+        .populate('owner', 'name') 
+        .sort({ createdAt: -1 });      
+
+        res.status(200).json(projects);
+    } catch (error) {
+        res.status(500).json({ message: error?.response?.data });
+    }
+};
+
 export const getProject = async (req, res) => {
     const {id} = req.params.id;
     try {

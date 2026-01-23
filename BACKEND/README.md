@@ -7,6 +7,11 @@
  
 ## the server is on "http://localhost:5000"
 
+
+## Landing Page **routes**
+### 1.user create (register)
+### |GET| "http:localhost:5000/landingPage"
+
 ## user **routes**
 ### 1.user create (register)
 #### |POST|"http://localhost:5000/user/register" 
@@ -16,6 +21,16 @@
 ####  |GET|""http://localhost:5000/user"
 
 
-## Landing Page **routes**
-### 1.user create (register)
-### |GET| "http:localhost:5000/landingPage"
+## Project **routes**
+### 1.project create 
+#### |POST|"http://localhost:5000/project/create"  
+{
+  name : "project Name",
+  description : "your project description",
+  members : [<memberId>, <memberId>],
+(opt) deadline : <date>,
+
+}
+### 2. get Projects
+####  |POST|""http://localhost:5000/user/login"
+### get all the users (only admin)
