@@ -32,5 +32,23 @@
 
 }
 ### 2. get Projects
-####  |POST|""http://localhost:5000/user/login"
-### get all the users (only admin)
+####  |GET|""http://localhost:5000/project"
+### this is the project main route 
+####  |GET|""http://localhost:5000/project/myProjects"
+### get all the projects (only authorized)
+####  |GET|""http://localhost:5000/project/:id"
+### get specefic project details 
+####  |POST|""http://localhost:5000/project/create"
+## {
+### Schema Fields
+
+| Field         | Type     | Validation / Info                          |
+|:--------------|:---------|:-------------------------------------------|
+| `name`        | String   | Required                                   |
+| `description` | String   | Optional                                   |
+| `owner`       | ObjectId | Required (References `User` model)         |
+| `members`     | Array    | Sub-docs: `user` (OID) and `role` (Enum)   |
+| `startDate`   | Date     | Default: `Date.now`                        |
+| `deadLine`    | Date     | Optional                                   |
+| `status`      | String   | Enum: `active`, `onGoing`, `completed`, `dropped`, `onHold` |
+### get specefic project details 
