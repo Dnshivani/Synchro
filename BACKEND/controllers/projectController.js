@@ -1,17 +1,28 @@
 import projectModel from "../models/project.js"
 
 export const createNewProject = async (req, res) => {
-    const {name, description} = req.body;
+    const {name, description, members} = req.body;
     const owner = await req.user._id;
+    const existingProject = await projectModel.findOne({ 
+        name: name, 
+        owner: req.user._id 
+    });
 
+    if (existingProject) {
+        return res.status(400).json({ 
+            message: `You already have a project with this name! -- ${name}`
+        });
+    }
+    let projectMembers = [req.user._id]; 
+    if (members && Array.isArray(members)) {
+      projectMembers = [...new Set([...projectMembers, ...members])]; 
+    }
   try {
     const newProject = await projectModel.create({
         name : name,
         description : description,
         owner : owner,
-        members : [{
-            user : owner, role : 'Admin'
-        }],
+        members : projectMembers,
         ...req.body
     });
     if (newProject) {
@@ -57,13 +68,34 @@ export const getMyProjects = async (req, res) => {
 };
 
 export const getProject = async (req, res) => {
-    const {id} = req.params.id;
+    const id = req.params.id;
     try {
-        const project = await projectModel.findById(id);
+        const project = await projectModel.findById(id)
+            .populate({
+                path: 'members.user',   
+                select: 'name email'
+            })
+            .populate('owner', 'name email'); 
+        const cleanMembers = project.members
+            .filter(m => m.user !== null) 
+            .map(m => ({
+                userId: m.user._id,
+                name: m.user.name,
+                email: m.user.email,
+                role: m.role
+            }));
         if (project) {
+            const projectData = project.toObject();
             res.status(200).json({
                 message : `This is the project referenced to ${id}`,
-                ...project
+                data: {
+                id: project._id,
+                name: project.name,
+                description: project.description,
+                owner: project.owner,
+                members: cleanMembers, 
+                startDate: project.startDate
+            }
             })
         }
     } catch(e) {
