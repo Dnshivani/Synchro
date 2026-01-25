@@ -20,14 +20,16 @@ export const registerUser = async (req, res, next) => {
       password: hashedPassword,
     };
     const newUser = await User.create(userData);
-    res.status(201).json({
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure:false, 
+      sameSite: "lax",  // taruvata strict 
+      maxAge: 30 * 24 * 60 * 60 * 1000
+    });
+    res.status(200).json({
       success: true,
-      message: "User created sucessfully",
-      data: {
-        name: newUser.name,
-        email: newUser.email,
-      },
-      token: generateToken(newUser._id),
+      name: user.name,
+      email: user.email
     });
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -95,5 +97,29 @@ export const logout = async (req, res) => {
     res.status(500).json({
       message : "logout Failed"
     })
+  }
+}
+
+export const deleteMe = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.user._id);
+    if (!user) {
+      return res.status(404).json({
+        message : "User not found"
+      })
+    }
+    res.cookie("token", "", {
+      httpOnly : true,
+      expires : new Date(0)
+    })
+    res.status(200).json({
+            status: "success",
+            message: "Account deleted permanently. We're sad to see you go!"
+        });
+  } catch(e){
+    res.status(500).json({ 
+            message: "Error deleting account", 
+            error: e.message 
+        });
   }
 }
