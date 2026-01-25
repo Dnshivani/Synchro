@@ -57,18 +57,43 @@ export const loginUser = async (req, res) => {
         message: "user does not exist",
       });
     }
+
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
       return res.status(403).json({ message: "incorrect Password!" });
     }
-    res.json({
+    const token = generateToken(user._id);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure:false, 
+      sameSite: "lax",  // taruvata strict 
+      maxAge: 30 * 24 * 60 * 60 * 1000
+    });
+    res.status(200).json({
       success: true,
       name: user.name,
-      email: user.email,
-      token: generateToken(user.id),
+      email: user.email
     });
   } catch (e) {
     res.status(500).json({message : "invalid userName or password"})
   }
 };
 
+export const logout = async (req, res) => {
+  try {
+    res.cookie ("token", "", {
+      httpOnly : true,
+      expires : new Date(0),
+      sameSite : "strict"
+    });
+    res.status(200).json({
+      status : "success",
+      message : "logout Successfully"
+    })
+  } catch (e) {
+    res.status(500).json({
+      message : "logout Failed"
+    })
+  }
+}
