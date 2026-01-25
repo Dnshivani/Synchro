@@ -55,15 +55,37 @@ export const getMyProjects = async (req, res) => {
         const projects = await projectModel.find({
             $or: [
                 { owner: req.user._id },
-                { members: req.user._id }
+                { "members.user": req.user._id }
             ]
         })
-        .populate('owner', 'name') 
-        .sort({ createdAt: -1 });      
+        .populate('owner', 'name email')
+        .populate('members.user', 'name email avatar')
+        .lean();
 
-        res.status(200).json(projects);
-    } catch (error) {
-        res.status(500).json({ message: error?.response?.data });
+        const cleanedProjects = projects.map(project => ({
+            ...project,
+            members: project.members
+                .filter(m => m.user !== null)
+                .map(m => ({
+                    userId: m.user._id,
+                    name: m.user.name,
+                    role: m.role
+                }))
+        }));
+
+        res.status(200).json({
+            status: "success",
+            count: cleanedProjects.length,
+            data: {
+                projects: cleanedProjects
+            }
+        });
+    } catch (e) {
+        res.status(500).json({ 
+            status: "error", 
+            message: "Could not fetch your projects",
+            error: e.message 
+        });
     }
 };
 
