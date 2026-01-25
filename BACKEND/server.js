@@ -2,26 +2,21 @@
 import express from "express"
 import chalk from "chalk"
 import dotenv from "dotenv"
-import cors from "cors"
+import connect_db from "./config/connect_db.js"
 dotenv.config();
-import connect_db from "./config/connect_db.js";
-import userRoute from "./routes/userRoutes.js";
-import workSpaceRoute from "./routes/workSpaceRoutes.js";
-import projectRoutes from "./routes/projectRoute.js";
-import { requestLogger } from "./middleWare/logger.js";
-import landingRoutes from "./routes/landingRoutes.js";
+import setupMiddleWare from "./startup/setupMiddleware.js";
+import setupRoutes from "./startup/setupRoutes.js";
 
 const app = express();
+
 const port = process.env.PORT;
 const mongo_uri = process.env.MONGO_URI;
+
 connect_db(mongo_uri);
-app.use(cors());
-app.use(express.json());
-app.use(requestLogger);
-app.use("/user", userRoute);
-app.use("/workspace", workSpaceRoute);
-app.use("/project", projectRoutes);
-app.use('/landingPage', landingRoutes);
+setupMiddleWare(app);
+
+setupRoutes(app);
+
 app.get("/", (req, res) => {
     res.status(200).json({
         message: "this is the home page"

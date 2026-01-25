@@ -1,6 +1,6 @@
-import User from "../models/user.js";
+import User from "../../models/user.js";
 import bcrypt from "bcryptjs";
-import generateToken from "../utils/genetateToken.js";
+import generateToken from "../../utils/genetateToken.js";
 
 export const registerUser = async (req, res, next) => {
   try {
@@ -71,3 +71,4 @@ export const loginUser = async (req, res) => {
     res.status(500).json({message : "invalid userName or password"})
   }
 };
+
