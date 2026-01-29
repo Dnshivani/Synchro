@@ -20,6 +20,7 @@ export const registerUser = async (req, res, next) => {
       password: hashedPassword,
     };
     const newUser = await User.create(userData);
+    const token = generateToken(newUser._id);
     res.cookie("token", token, {
       httpOnly: true,
       secure:false, 
@@ -28,8 +29,8 @@ export const registerUser = async (req, res, next) => {
     });
     res.status(200).json({
       success: true,
-      name: user.name,
-      email: user.email
+      name: newUser.name,
+      email: newUser.email
     });
   } catch (e) {
     res.status(500).json({ message: e.message });
