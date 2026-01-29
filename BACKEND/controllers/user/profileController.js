@@ -1,5 +1,6 @@
 import User from "../../models/user.js";
 import projectModel from "../../models/project.js";
+import bcrypt from "bcryptjs";
 
 export const getUserProfile = async (req, res) => {
     try {
@@ -71,6 +72,6 @@ export const updatePassword = async (req, res) => {
             name : user.name
         })
     } catch (e) {
-        res.status(500).json({message : "Server Error"})
+        res.status(500).json({message : e.message});
     }
 }
