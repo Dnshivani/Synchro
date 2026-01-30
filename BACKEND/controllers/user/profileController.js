@@ -75,3 +75,17 @@ export const updatePassword = async (req, res) => {
         res.status(500).json({message : e.message});
     }
 }
+
+export const updateAvatar = async (req, res) => {
+    try {
+        const {avatar} = req.body;
+        const user = await User.findById(req.user._id).select("-password");
+        if (!user) res.status(404).json({message : "user not found"});
+
+        user.avatar = avatar;
+        await user.save();
+
+    } catch (e) {
+        res.status(500).json({message : e.message});
+    }
+}
