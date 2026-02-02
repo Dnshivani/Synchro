@@ -16,7 +16,7 @@ export default function NavBar() {
                 </div>
                 <div className="navbar-end ">
                     <Link to="/signup">
-                        <a className="btn btn-outline  text-custom-primary" >Get Started</a>
+                        <p className="btn btn-outline  text-custom-primary" >Get Started</p>
                     </Link>
                     <ThemeToggle />
                 </div>
@@ -24,3 +24,5 @@ export default function NavBar() {
         </div>
     )
 }
+//i want this nav bar to be able to use in landing page as will as dashboard
+//map method try

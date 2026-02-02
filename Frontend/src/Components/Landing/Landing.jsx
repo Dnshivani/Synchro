@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from './NavBar'
+import NavBar from '../NavBar.jsx'
 import HeroSection from './HeroSection'
 import Footer from './Footer'
 import HowItworks from './HowItworks'
@@ -11,7 +11,7 @@ export default function Landing() {
             <NavBar />
             <HeroSection />
             <HowItworks />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

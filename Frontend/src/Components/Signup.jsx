@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Landing from './Landing'
-import HeroSection from './HeroSection'
+import Landing from './Landing/Landing'
+import HeroSection from './Landing/HeroSection'
 import Logo from './Logo'
 import axios from 'axios'
-import DashBoard from './DashBoard'
+import DashBoard from './DashBoard/DashBoard'
 
 export default function Signup() {
     const [isSignup, changePage] = React.useState(true);
@@ -121,3 +121,6 @@ export default function Signup() {
     )
 }
 
+//login to another account  button
+//logout option
+//Login ey ledhu indhulo think by props

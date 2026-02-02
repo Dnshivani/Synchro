@@ -7,3 +7,4 @@ export default function Logo() {
         </div>
     )
 }
+//try logo by learning svg
