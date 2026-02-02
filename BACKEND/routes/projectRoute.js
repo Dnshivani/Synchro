@@ -6,4 +6,5 @@ router.get('/myProjects', protect, getMyProjects);
 router.get('/', protect, (req, res) => {res.json({message:"this is the project route"})})
 router.get('/:id', protect, getProject)
 router.post('/create', protect, createNewProject);
+router.put('/update', protect, )
 export default router;

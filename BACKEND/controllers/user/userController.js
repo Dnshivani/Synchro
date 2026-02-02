@@ -43,7 +43,7 @@ export const getUsers = async (req, res) => {
     const count = await User.countDocuments();
     res.status(200).json({
       success: true,
-      message: "User found",
+      message: "Users found",
       existed
     });
   } catch (e) {
