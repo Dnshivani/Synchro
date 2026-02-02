@@ -9,7 +9,9 @@ export default function Landing() {
         <div >
             {/* <h1 className='text-center'>Daisy working</h1> */}
             <NavBar />
-            <HeroSection />
+            <div className=' flex justify-center'>
+                <HeroSection />
+            </div>
             <HowItworks />
             {/* <Footer /> */}
         </div>

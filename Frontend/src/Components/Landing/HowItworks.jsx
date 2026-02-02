@@ -44,7 +44,7 @@ export default function HowItworks() {
 
     return (
 
-        <div className=' max-w-6xl justify-items-center '>
+        <div className='  justify-items-center '>
 
 
             <h2 className="text-2xl font-bold text-gray-800  text-center mt-3">
