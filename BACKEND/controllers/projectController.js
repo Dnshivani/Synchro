@@ -131,3 +131,35 @@ export const getProject = async (req, res) => {
     });
   }
 };
+
+export const updateProject = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { name, description, status, deadLine } = req.body;
+        const project = await projectModel
+        .findById(id)
+        .populate({
+        path: "members.user",
+        select: "name email",
+      })
+      .populate("owner", "name email");
+        if (!project) {
+            res.status(409).json({message: "project Not Found"})
+        }
+        const isOwner = project.owner._id.toString() === req.user._id.toString();
+        if (!isOwner) {
+            res.status(409).json({message: "you are not allowed!"});
+        }
+        const updatedProject = await projectModel.findByIdAndUpdate(id,
+            {name, description, status, deadLine},
+            {new : true, runValidators : true}
+        )
+
+        res.status(200).json({
+            status: "success",
+            data: { project: updatedProject }
+        });
+    } catch (e) {
+        res.status(500).json({message : e.message});
+    }
+}
