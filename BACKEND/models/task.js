@@ -19,6 +19,9 @@ const task = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
+    dueDate : {
+        type : Date,
+    },
     status : {
         type : String,
         enum : ["todo", "pending", "completed"],
@@ -28,7 +31,13 @@ const task = new mongoose.Schema({
         type : String,
         enum : ["low", "medium", "high"],
         default : "medium"
-    }
+    },
+    tags : [
+        {
+            type : String,
+            trim : true
+        }
+    ]
 },
      {
         timestamps : true

@@ -1,0 +1,22 @@
+//USERS
+|POST| /user/register
+|GET| /user
+|POST| /user/login
+|POST| /user/logout
+|DELETE|/user/deleteMe
+
+
+//PROFILE
+|GET| /profile
+|PUT| /profile/update
+|PUT| /profile/resetPassword
+
+
+//PROJECTS
+|POST| /project/create
+|GET| /project/myProjects
+|GET| /project/:id
+|PUT| /project/:id
+
+//landingPage
+|GET| /landingRecords/

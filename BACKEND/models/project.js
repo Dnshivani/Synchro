@@ -38,7 +38,7 @@ const projectSchema = new mongoose.Schema({
 projectSchema.virtual('tasks', {
     ref : 'Task',
     localField : '_id',
-    foreignField : 'Project'
+    foreignField : 'project'
 });
 
 const projectModel = mongoose.model('Project', projectSchema);
