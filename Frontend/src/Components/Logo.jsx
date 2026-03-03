@@ -1,9 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Logo() {
     return (
         <div >
-            <p className="btn   btn-primary text-xl   ">Synchro</p>
+            <Link to="/">
+                <p className="btn   btn-primary text-xl   ">Synchro</p>
+            </Link>
         </div>
     )
 }

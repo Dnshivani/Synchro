@@ -54,7 +54,7 @@ export default function Signup() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col  gap-5 items-center justify-center p-4">
             <div className='max-w-lg card bg-base-100 w-96 shadow-sm bg-white ' >
 
 
@@ -77,10 +77,14 @@ export default function Signup() {
                             </p>
                         </div>)}
 
-                        <div className='form-control'>
+                        <div className='form-control '>
                             <label className='label label-text font-medium' >Enter email</label>
                             <input type="email" placeholder="mail@site.com" name='email' value={details.email} onChange={handleChange}
-                                className="input input-bordered w-full border-2 validator" />
+                                className="input input-bordered w-full border-2 validator"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                            <p className="validator-hint text-xs text-gray-500">
+                                Please enter a valid email address (e.g., name@domain.com)
+                            </p>
                         </div>
                         <div className="form-control">
                             <label className='label label-text font-medium' >Password</label>
@@ -94,17 +98,10 @@ export default function Signup() {
                         </div>
                         <div className="text-center mt-4">
 
-                            {success || error ? (<div> {success && <div className="alert alert-success shadow-lg animate-fade-in">
-                                <span>{success}</span>
-                            </div>}
-                                {error && <div role="alert" className="alert alert-error shadow-lg animate-fade-in">
-                                    <span>{error}</span>
-                                </div>}
-                            </div>) : (
-                                <button className='btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >
-                                    {isSignup ? 'Create Account ' : 'Login '}
-                                </button>
-                            )}
+
+                            <button className='btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >
+                                {isSignup ? 'Create Account ' : 'Login '}
+                            </button>
                             <p className=" font-small"
                                 onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>
                                 {isSignup ? 'Already have a account ? ' : 'Dont have a account ? '}
@@ -113,6 +110,14 @@ export default function Signup() {
                         </div>
                     </form >
                 </div>
+            </div>
+            <div className='ml-10 '>
+                {success && <div className="alert alert-success shadow-lg animate-fade-in">
+                    {success}
+                </div>}
+                {error && <div role="alert" className="alert alert-error shadow-lg animate-fade-in">
+                    {error}
+                </div>}
             </div>
 
 

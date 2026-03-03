@@ -5,10 +5,12 @@ import Footer from './Footer'
 import HowItworks from './HowItworks'
 
 export default function Landing() {
+    const landing = true;
     return (
         <div >
             {/* <h1 className='text-center'>Daisy working</h1> */}
-            <NavBar />
+
+            <NavBar landing={landing} />
             <div className=' flex justify-center'>
                 <HeroSection />
             </div>

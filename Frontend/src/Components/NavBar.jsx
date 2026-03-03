@@ -4,10 +4,10 @@ import Logo from './Logo'
 import Signup from './Signup'
 import { Link } from 'react-router-dom'
 
-export default function NavBar({ element = [], basepath = "" }) {//element=element same 
+export default function NavBar({ element = [], basepath = "", landing = false }) {//element=element same 
     const traverse = () => {
         return (
-            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p key={ele.id} > {ele.e}</p ></Link>))
+            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className="hover:text-custom-accent" key={ele.id} > {ele.e}</p ></Link>))
 
         )
     }
@@ -18,11 +18,13 @@ export default function NavBar({ element = [], basepath = "" }) {//element=eleme
 
                     <Logo />
                 </div>
-                <div className='flex gap-4 text-custom-primary'>{traverse()}</div>
+                <div className='flex gap-6 text-custom-primary '>{traverse()}</div>
                 <div className="navbar-end ">
-                    <Link to="/signup">
-                        <p className="btn btn-outline  text-custom-primary" >Get Started</p>
-                    </Link>
+                    {landing && (
+                        <Link to="/signup">
+                            <p className="btn btn-outline  text-custom-primary" >Get Started</p>
+                        </Link>
+                    )}
                     <ThemeToggle />
                 </div>
             </div>
