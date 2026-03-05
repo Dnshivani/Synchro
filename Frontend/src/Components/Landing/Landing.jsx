@@ -3,12 +3,13 @@ import NavBar from '../NavBar.jsx'
 import HeroSection from './HeroSection'
 import Footer from './Footer'
 import HowItworks from './HowItworks'
+import '../../index.css'
 
 export default function Landing() {
     const landing = true;
     return (
         <div >
-            {/* <h1 className='text-center'>Daisy working</h1> */}
+            <h1 className='text-accent'>Daisy working</h1>
 
             <NavBar landing={landing} />
             <div className=' flex justify-center'>

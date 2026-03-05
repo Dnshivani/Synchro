@@ -3,16 +3,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force your theme colors */
-:root {
-    --color-primary: #1F7A5A;
-    --color-primary-content: #ffffff;
-    --color-secondary: #F4F7F5;
-    --color-accent: #F59E0B;
-    --color-neutral: #1f2937;
-    --color-base-100: #ffffff;
-    --color-base-200: #F4F7F5;
-    --color-base-300: #D1D5DB;
+[data-theme="syncro-dark"] {
+    --p: #52b69a;
+    --pc: #2d6a4f;
+
+    --s: #91d2ab;
+    --sc: #D1FAE5;
+
+    --a: #ed7606;
+    --ac: #f5d101;
+
+    --n: #111827;
+    --nc: #E5E7EB;
+
+    --b1: #0F172A;
+    --b2: #1E293B;
+    --b3: #334155;
+}
+
+[data-theme="synchro"] {
+    --p: #16A34A;
+    /*fix*/
+    --pc: #FBF9F1;
+
+    --s: #81E7AF;
+    --sc: #03A791;
+
+    --a: #eb1111;
+    --ac: #f61010;
+
+    --n: #1B4242;
+    --nc: #F7F9F2;
+
+    --b1: #F1F8E8;
+    --b2: #D8EFD3;
+    --b3: #BFF6C3;
 }
 
 /* Override DaisyUI button colors */
@@ -35,3 +60,17 @@
 .text-primary {
     color: #1F7A5A;
 }
+
+/*
+Variable	Meaning	Used For
+--p	    Primary	main buttons, highlights
+--pc	Primary content	text on primary
+--s	    Secondary	secondary buttons
+--sc	Secondary content	text on secondary
+--a	    Accent	badges, highlights
+--ac	Accent content	text on accent
+--n	    Neutral	dark surfaces
+--nc	Neutral content	text on neutral
+--b1	Base 1	main background
+--b2	Base 2	cards / sections
+--b3	Base 3	borders / subtle UI*/

@@ -6,14 +6,14 @@ export default {
       colors: {
         'custom-primary': '#1F7A5A',
         'custom-secondary': '#F4F7F5',
-        'custom-accent': '#F59E0B',
+        'custom-accent': '#171BFF',
         'custom-border': '#D1D5DB',
       }
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: false,
+    themes: ["synchro"]
   },
 }
 

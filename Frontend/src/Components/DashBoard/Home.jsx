@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../../src/index.css'
 import HomeSection from './HomeSection'
 import { Link } from 'react-router-dom'
 const Home = () => {
@@ -11,8 +12,8 @@ const Home = () => {
     const iterateTasks = () => {
         return (tasks.map(item => (<Link to="/"> <div className='card card-lg bg-base-100 shadow-sm bg-custom-secondary gap-2 m-2' key="item.id"> {/*navigate to ws*/}
             <p className='font-semibold'> {item.currentTasksDoing}</p>
-            <p> <span className='btn btn-sm btn-soft btn-error'>  {item.state}</span>  <span className='btn btn-info btn-soft btn-sm'>{item.RoleName}</span><span className='btn btn-sm btn-soft btn-success'>{item.submissionDate}</span></p>
-            <p className='btn text-center btn-soft btn-accent'> {item.nameOfWS}</p>
+            <p> <span className='btn btn-accent btn-sm btn-soft '>  {item.state}</span>  <span className='btn btn-info btn-soft btn-sm'>{item.RoleName}</span><span className='btn btn-sm btn-soft btn-success'>{item.submissionDate}</span></p>
+            <p className='btn  btn-soft btn-accent'> {item.nameOfWS}</p>
 
         </div></Link>))
 
