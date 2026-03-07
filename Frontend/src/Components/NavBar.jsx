@@ -18,11 +18,11 @@ export default function NavBar({ element = [], basepath = "", landing = false })
 
                     <Logo />
                 </div>
-                <div className='flex gap-6 text-custom-primary '>{traverse()}</div>
+                <div className='flex gap-6 text-primary '>{traverse()}</div>
                 <div className="navbar-end ">
                     {landing && (
                         <Link to="/signup">
-                            <p className="btn btn-outline  text-custom-primary" >Get Started</p>
+                            <p className="btn btn-outline  text-primary" >Get Started</p>
                         </Link>
                     )}
                     <ThemeToggle />
