@@ -1,33 +1,15 @@
 import React from 'react'
-//add it in dashboard navbar
-export default function ThemeToggle() {
-    // Function to toggle between light/dark themes
-    const toggleTheme = () => {
-        // 1. Get the HTML element
-        const htmlElement = document.documentElement;
 
-        // 2. Check current theme
-        const currentTheme = htmlElement.getAttribute('data-theme');
-
-        // 3. Determine new theme (switch between light/dark)
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        // 4. Apply new theme to HTML
-        htmlElement.setAttribute('data-theme', newTheme);
-
-        // 5. Save user preference to browser storage
-        localStorage.setItem('theme', newTheme);
-    };
-
+const ThemeToggle = () => {
     return (
         <div>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate px-4">
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" className="theme-controller" value="synthwave" />
+                <input type="checkbox" />
 
                 {/* sun icon */}
                 <svg
-                    className="swap-off h-10 w-10 fill-current"
+                    className="swap-on h-10 w-10 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
                     <path
@@ -36,15 +18,15 @@ export default function ThemeToggle() {
 
                 {/* moon icon */}
                 <svg
-                    className="swap-on h-10 w-10 fill-current"
+                    className="swap-off h-10 w-10 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
                     <path
                         d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                 </svg>
             </label>
-
         </div>
-    );
+    )
 }
-//make this work but not now
+
+export default ThemeToggle
