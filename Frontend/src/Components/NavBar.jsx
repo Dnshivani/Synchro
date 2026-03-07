@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function NavBar({ element = [], basepath = "", landing = false }) {//element=element same 
     const traverse = () => {
         return (
-            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className="hover:text-accent" key={ele.id} > {ele.e}</p ></Link>))
+            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className="hover:text-custom-accent" key={ele.id} > {ele.e}</p ></Link>))
 
         )
     }
