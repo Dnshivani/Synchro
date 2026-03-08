@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ThemeToggle = () => {
+
     return (
         <div>
             <label className="swap swap-rotate px-4">

@@ -54,41 +54,42 @@ export default function Signup() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
-            <div className='max-w-lg card bg-base-100 w-96 shadow-sm bg-white ' >
+        <div className="min-h-screen bg-base-100 from-blue-50 to-gray-100 flex items-center justify-center p-4">
+            <div className='max-w-lg card  w-96 shadow-sm bg-base-300 ' >
 
 
-                <div className='text-xl border card-body p-8 '>
+                <div className='text-xl border-neutral card-body p-8 '>
                     <div className='flex justify-center mb-6'> <Link to="/"> <Logo /> </Link> </div>
 
                     <div className="text-center mb-8">
-                        <h2 className='text-2xl font-bold text-gray-800'>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
-                        <p className='text-gray-600 mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
+                        <h2 className='text-2xl font-bold text-accent-content'>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
+                        <p className='text-accent-content mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
                     </div>
 
                     <form method="POST" onSubmit={handleSubmit} >
                         {isSignup && (<div className='form-control'>
-                            <label className='label label-text font-medium'> Full Name </label>
+                            <label className='label label-text font-medium text-secondary-content'> Full Name </label>
                             <input type="text" placeholder="Enter Your Name" name='name' value={details.name} onChange={handleChange}
-                                className="input input-bordered  border-2 w-full validator"
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator"
                                 pattern="[A-Za-z][A-Za-z0-9\_]*" minLength="3" maxLength="30" />
-                            <p className="validator-hint text-xs text-gray-500">
+                            <p className="validator-hint text-xs text-info">
                                 Must be 3 to 30 characterss,containing only letters, numbers or underscore.
                             </p>
                         </div>)}
 
                         <div className='form-control'>
-                            <label className='label label-text font-medium' >Enter email</label>
+                            <label className='label label-text font-medium text-secondary-content' >Enter email</label>
                             <input type="email" placeholder="mail@site.com" name='email' value={details.email} onChange={handleChange}
-                                className="input input-bordered w-full border-2 validator" />
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 w-full border-2 validator" />
                         </div>
+
                         <div className="form-control">
-                            <label className='label label-text font-medium' >Password</label>
+                            <label className='label label-text font-medium  text-secondary-content' >Password</label>
                             <input type="password" placeholder="••••••••" minLength="8" name='password' value={details.password} onChange={handleChange}
-                                className="input input-bordered border-2 w-full validator"
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                            <p className="validator-hint text-xs text-gray-500">
+                            <p className="validator-hint text-xs text-info">
                                 Must be more than 8 characters, including one number, one lowercase letter, one uppercase letter
                             </p>
                         </div>
@@ -101,14 +102,14 @@ export default function Signup() {
                                     <span>{error}</span>
                                 </div>}
                             </div>) : (
-                                <button className='btn btn-primary w-full mb-3 border-2 border-green-700 hover:border-green-800' type="submit" >
+                                <button className='btn btn-accent w-full mb-3 border-2 border-accent hover:border-accent-content' type="submit" >
                                     {isSignup ? 'Create Account ' : 'Login '}
                                 </button>
                             )}
-                            <p className=" font-small"
+                            <p className=" font-small "
                                 onClick={() => { showError(""); showSuccess(""); changePage(!isSignup); modify({ "name": "", "email": "", "password": "" }); }}>
                                 {isSignup ? 'Already have a account ? ' : 'Dont have a account ? '}
-                                <span className='text-green-600 hover:text-green-900  hover:underline cursor-pointer'>{isSignup ? 'Login' : 'Signup'}</span>
+                                <span className='text-accent-content-600 hover:text-accent  hover:underline cursor-pointer'>{isSignup ? 'Login' : 'Signup'}</span>
                             </p>
                         </div>
                     </form >
