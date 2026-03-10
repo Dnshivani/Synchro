@@ -7,21 +7,22 @@ import { Link } from 'react-router-dom'
 export default function NavBar({ element = [], basepath = "" }) {//element=element same 
     const traverse = () => {
         return (
-            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p key={ele.id} > {ele.e}</p ></Link>))
+            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className='hover:text-accent' key={ele.id} > {ele.e}</p ></Link>))
 
         )
     }
     return (
         <div >
-            <div className="navbar bg-base-100 shadow-sm bg-custom-secondary">
+            <div className="navbar bg-base-200 shadow-sm">
                 <div className="navbar-start">
-
-                    <Logo />
+                    <Link to="/">
+                        <Logo />
+                    </Link>
                 </div>
-                <div className='flex gap-4 text-custom-primary'>{traverse()}</div>
+                <div className='flex gap-4 text-primary-content'>{traverse()}</div>
                 <div className="navbar-end ">
                     <Link to="/signup">
-                        <p className="btn btn-outline  text-custom-primary" >Get Started</p>
+                        <p className="btn btn-outline  text-primary-content" >Get Started</p>
                     </Link>
                     <ThemeToggle />
                 </div>

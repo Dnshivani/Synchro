@@ -13,10 +13,10 @@ export default function HowItworks() {
             step => (
                 <div className=" p-10 rounded-xl shadow-lg dark:bg-gray-50 dark:text-gray-900 flex flex-col justify-center " key={step.id}>
                     <div className="mt-6 mb-2">
-                        <span className="block text-xs font-medium tracking-widest uppercase dark:text-green-600"> Step- {step.id}</span>
-                        <h2 className="text-xl font-semibold tracking-wide">{step.title}</h2>
+                        <span className="block text-xs font-medium tracking-widest uppercase dark:text-secondary-content"> Step- {step.id}</span>
+                        <h2 className="text-xl font-semibold tracking-wide  text-primary-content">{step.title}</h2>
                     </div>
-                    <p className="dark:text-gray-800">{step.des} </p>
+                    <p className="dark:text-neutral">{step.des} </p>
                 </div>
             )))
     }
@@ -31,9 +31,9 @@ export default function HowItworks() {
         return (
             BuiltFor.map(fors => (
 
-                <div key={fors.id} className=" min-w-[280px] h-56 bg-white border border-green-100 rounded-2xl p-8 flex flex-col justify-between shadow-sm">
-                    <h2 className="text-2xl font-semibold text-green-700 mb-3">{fors.title}</h2>
-                    <p className='text-gray-600 leading-relaxed'>{fors.des}</p>
+                <div key={fors.id} className=" min-w-[280px]  h-56 bg-primary border border-primary-100 rounded-2xl p-8 flex flex-col justify-between shadow-sm">
+                    <h2 className="text-2xl font-semibold text-primary-content mb-3">{fors.title}</h2>
+                    <p className='text-neutral leading-relaxed'>{fors.des}</p>
                 </div>
 
 
@@ -47,7 +47,7 @@ export default function HowItworks() {
         <div className='  justify-items-center '>
 
 
-            <h2 className="text-2xl font-bold text-gray-800  text-center mt-3">
+            <h2 className="text-2xl font-bold text-secondary-content  text-center mt-3">
                 Designed to work for every team
             </h2>
 
@@ -58,7 +58,7 @@ export default function HowItworks() {
             </div>
 
 
-            <p className='text-2xl font-bold text-gray-800 mt-3'>  Get started in three simple steps</p>
+            <p className='text-2xl font-bold text-secondary-content mt-3'>  Get started in three simple steps</p>
             <div className="max-h-screen grid grid-cols-1 md:grid-cols-3 gap-8 p-8">
                 {iterateSteps()}
             </div>

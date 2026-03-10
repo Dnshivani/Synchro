@@ -58,7 +58,7 @@ export default function Signup() {
             <div className='max-w-lg card  w-96 shadow-sm bg-base-300 ' >
 
 
-                <div className='text-xl border-neutral card-body p-8 '>
+                <div className='text-xl border-neutral card-body p-8'>
                     <div className='flex justify-center mb-6'> <Link to="/"> <Logo /> </Link> </div>
 
                     <div className="text-center mb-8">
@@ -66,27 +66,27 @@ export default function Signup() {
                         <p className='text-accent-content mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
                     </div>
 
-                    <form method="POST" onSubmit={handleSubmit} >
-                        {isSignup && (<div className='form-control'>
+                    <form method="POST" onSubmit={handleSubmit} className=''  >
+                        {isSignup && (<div className=''>
                             <label className='label label-text font-medium text-secondary-content'> Full Name </label>
                             <input type="text" placeholder="Enter Your Name" name='name' value={details.name} onChange={handleChange}
-                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator"
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator p-5"
                                 pattern="[A-Za-z][A-Za-z0-9\_]*" minLength="3" maxLength="30" />
                             <p className="validator-hint text-xs text-info">
                                 Must be 3 to 30 characterss,containing only letters, numbers or underscore.
                             </p>
                         </div>)}
 
-                        <div className='form-control'>
+                        <div className=''>
                             <label className='label label-text font-medium text-secondary-content' >Enter email</label>
                             <input type="email" placeholder="mail@site.com" name='email' value={details.email} onChange={handleChange}
-                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 w-full border-2 validator" />
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 w-full border-2 validator p-5" />
                         </div>
 
-                        <div className="form-control">
+                        <div className="">
                             <label className='label label-text font-medium  text-secondary-content' >Password</label>
                             <input type="password" placeholder="••••••••" minLength="8" name='password' value={details.password} onChange={handleChange}
-                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator"
+                                className="input input-bordered border-accent text-shadow-neutral-content  bg-base-200 border-2 w-full validator p-5"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
                             <p className="validator-hint text-xs text-info">
