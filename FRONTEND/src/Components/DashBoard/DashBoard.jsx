@@ -11,7 +11,7 @@ const DashBoard = () => {
     return (
 
         <div>
-            <p>DashBard</p>
+            {/* <p>DashBard</p> */}
 
             <NavBar element={element} basepath='/dashboard' />
             <Outlet />
