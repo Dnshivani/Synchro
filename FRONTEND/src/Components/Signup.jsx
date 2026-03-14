@@ -62,8 +62,8 @@ export default function Signup() {
                     <div className='flex justify-center mb-6'> <Link to="/"> <Logo /> </Link> </div>
 
                     <div className="text-center mb-8">
-                        <h2 className='text-2xl font-bold text-accent-content'>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
-                        <p className='text-accent-content mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
+                        <h2 className='text-2xl font-bold text-accent'>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
+                        <p className='text-accent mt-2'>{isSignup ? 'Start organizing your projects today' : 'Enter your credentials to access your workspaces'}</p>
                     </div>
 
                     <form method="POST" onSubmit={handleSubmit} className=''  >
