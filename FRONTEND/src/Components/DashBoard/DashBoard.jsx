@@ -4,9 +4,10 @@ import NavBar from '../NavBar.jsx'
 import { Outlet } from 'react-router-dom';
 const DashBoard = () => {
     const element = [{ "id": 1, "e": "Home" },
-    { "id": 2, "e": "DiscoverWorkspace" },
-    { "id": 3, "e": "Notifications" },
-    { "id": 4, "e": "Profile" },];
+    { "id": 2, "e": "MyWorkspace" },
+    { "id": 3, "e": "DiscoverWorkspace" },
+    { "id": 4, "e": "Notifications" },
+    { "id": 5, "e": "Profile" },];
 
     return (
 

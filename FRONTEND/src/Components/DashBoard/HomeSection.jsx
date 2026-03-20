@@ -19,7 +19,7 @@ const HomeSection = () => {
     }
     return (
         <>
-            <div className='card lg mt-5 bg-base-100 shadow-sm bg-custom-secondary   m-4'>
+            <div className='card lg m-4 bg-base-200 shadow-sm bg-custom-secondary  p-4'>
 
                 <p className='text-3xl font-bold text-secondary'>Welcome {username}</p>
                 <p className='text-center  font-semibold text-neutral'>Here's what's happening with your workspaces   </p>

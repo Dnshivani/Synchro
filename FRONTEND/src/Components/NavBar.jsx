@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function NavBar({ element = [], basepath = "" }) {//element=element same 
     const traverse = () => {
         return (
-            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className='hover:text-accent' key={ele.id} > {ele.e}</p ></Link>))
+            (element.map(ele => <Link to={`${basepath}/${ele.e.toLowerCase()}`}><p className='hover:text-accent  items-center  ' key={ele.id} > {ele.e}</p ></Link>))
 
         )
     }
@@ -21,9 +21,10 @@ export default function NavBar({ element = [], basepath = "" }) {//element=eleme
                 </div>
                 <div className='flex gap-4 text-primary-content'>{traverse()}</div>
                 <div className="navbar-end ">
-                    <Link to="/signup">
-                        <p className="btn btn-outline  text-primary-content" >Get Started</p>
-                    </Link>
+                    {element.length == 0 && (
+                        <Link to="/signup">
+                            <p className="btn btn-outline  text-primary-content" >Get Started</p>
+                        </Link>)}
                     <ThemeToggle />
                 </div>
             </div>
