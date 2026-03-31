@@ -4,14 +4,15 @@ import NavBar from '../NavBar.jsx'
 import { Outlet } from 'react-router-dom';
 const DashBoard = () => {
     const element = [{ "id": 1, "e": "Home" },
-    { "id": 2, "e": "DiscoverWorkspace" },
-    { "id": 3, "e": "Notifications" },
-    { "id": 4, "e": "Profile" },];
+    { "id": 2, "e": "MyWorkspace" },
+    { "id": 3, "e": "DiscoverWorkspace" },
+    { "id": 4, "e": "Notifications" },
+    { "id": 5, "e": "Profile" },];
 
     return (
 
         <div>
-            <p>DashBard</p>
+            {/* <p>DashBard</p> */}
 
             <NavBar element={element} basepath='/dashboard' />
             <Outlet />
@@ -23,3 +24,10 @@ const DashBoard = () => {
 }
 
 export default DashBoard
+/*
+
+/*
+hero section :create workspcase button  a component for create tasks
+list of all workspace if any thiing is clicked to to another folder called workspace 
+there we have workspace componnt which have kananban ,profileall that
+*/
