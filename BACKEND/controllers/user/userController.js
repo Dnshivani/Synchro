@@ -47,7 +47,7 @@ export const getUsers = async (req, res) => {
       existed
     });
   } catch (e) {
-    res.staus(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
