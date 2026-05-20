@@ -16,8 +16,6 @@ const DashBoard = () => {
 
             <NavBar element={element} basepath='/dashboard' />
             <Outlet />
-        // home discover_workspace notifications profile
-
 
         </div>
     )
