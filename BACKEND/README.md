@@ -84,7 +84,9 @@ Project schema (important fields):
     ```
 
 6) Task
-- POST `/projects/:projectId/tasks/create` — create task in project (protected)
+- All task routes are mounted under `/tasks`.
+
+- POST `/tasks/:projectId/create` — create task in a project (protected)
   - Request JSON:
     ```json
     {
@@ -97,12 +99,12 @@ Project schema (important fields):
     ```
   - Permission: project owner or member
 
-- GET `/projects/:projectId/tasks` — list project tasks (protected)
+- GET `/tasks/:projectId` — list tasks for a project (protected)
 - GET `/tasks/task/:taskId` — get single task (protected)
 - PUT `/tasks/:taskId` — update task (protected; owner/member)
-- PUT `/tasks/:taskId/assign` — assign/reassign (protected; owner/member)
+- PUT `/tasks/:taskId/assign` — assign/reassign task (protected; owner/member)
 - GET `/tasks/my-tasks` — tasks assigned to current user (protected)
-- GET `/projects/:projectId/tasks/:status` — filter by status `todo|pending|completed` (protected)
+- GET `/tasks/:projectId/status/:status` — filter by status `todo|pending|completed` (protected)
 - DELETE `/tasks/:taskId` — delete task (project owner only)
 
 Task schema (important fields):
@@ -117,6 +119,35 @@ Task schema (important fields):
 | `status` | String | enum: `todo`,`pending`,`completed` (default: `todo`) |
 | `priority` | String | enum: `low`,`medium`,`high` (default: `medium`) |
 | `tags` | [String] | optional |
+
+7) Notifications
+- All notification routes are mounted under `/notifications` (protected).
+
+- GET `/notifications/` — list notifications for current user (protected)
+- GET `/notifications/unread/count` — get unread notifications count (protected)
+- GET `/notifications/:id` — get single notification (protected)
+- POST `/notifications/` — send/create a notification (protected)
+  - Example body:
+    ```json
+    {
+      "toUser": "64a1f2e9a0b1c2d3e4f56789",
+      "title": "New Task Assigned",
+      "message": "You were assigned to task 'Design mockups'.",
+      "data": { "taskId": "60f1a2b3c4d5e6f7a8b9c0d", "projectId": "70a1b2c3d4e5f6g7h8i9j0k" }
+    }
+    ```
+- PATCH `/notifications/:id/read` — mark a notification as read (protected)
+- PATCH `/notifications/markAllRead` — mark all notifications as read for current user (protected)
+- DELETE `/notifications/:id` — delete a notification (protected)
+
+Example curl to send a notification:
+
+```bash
+curl -X POST http://localhost:5000/notifications/ \\
+  -H "Authorization: Bearer <TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"toUser":"64a1f2e9a0b1c2d3e4f56789","title":"New Task Assigned","message":"Please check the task.","data":{"taskId":"60f1a2b3c4d5e6f7a8b9c0d"}}'
+```
 
 ---
 

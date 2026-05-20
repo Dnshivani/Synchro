@@ -4,6 +4,7 @@ import projectRoutes from "../routes/projectRoute.js";
 import landingRoutes from "../routes/landingRoutes.js";
 import profileRoutes from "../routes/profileRoutes.js"
 import taskRoutes from "../routes/taskRoutes.js"
+import notificationRoutes from "../routes/notificationRoutes.js"
 
 export default function(app) {
     app.use("/user", userRoute);
@@ -12,4 +13,5 @@ export default function(app) {
     app.use("/landingPage", landingRoutes);
     app.use("/profile", profileRoutes);
     app.use("/tasks", taskRoutes);
+    app.use("/notifications", notificationRoutes);
 }
